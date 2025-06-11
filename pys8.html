@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- Recommended meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <!-- PyScript CSS -->
+        <link rel="stylesheet" href="https://pyscript.net/releases/2025.5.1/core.css">
+        <!-- This script tag bootstraps PyScript -->
+        <script type="module" src="https://pyscript.net/releases/2025.5.1/core.js"></script>
+    </head>
+<body>
+
+    <h2>Mini-Calc&trade;</h2>
+
+    <label for="num1">Number 1:</label>
+    <input type="number" id="num1" /><br><br>
+
+    <label for="num2">Number 2:</label>
+    <input type="number" id="num2" /><br><br>
+
+    <button py-click="add_numbers">Add</button>
+    <button py-click="sub_numbers">Subtract</button>
+    <button py-click="mul_numbers">Multiply</button>
+    <button py-click="div_numbers">Divide</button>
+
+    <p id="result"></p>
+
+<py-script>
+from pyscript import document
+def add_numbers(*args, **kwargs):
+    num1 = float(document.getElementById("num1").value)
+    num2 = float(document.getElementById("num2").value)
+    result = num1 + num2
+    document.getElementById("result").innerText = f"{num1} + {num2} = {result}"
+
+def sub_numbers(*args, **kwargs):
+    num1 = float(document.getElementById("num1").value)
+    num2 = float(document.getElementById("num2").value)
+    result = num1 - num2
+    document.getElementById("result").innerText = f"{num1} - {num2} = {result}"
+
+def mul_numbers(*args, **kwargs):
+    num1 = float(document.getElementById("num1").value)
+    num2 = float(document.getElementById("num2").value)
+    result = num1 * num2
+    document.getElementById("result").innerText = f"{num1} * {num2} = {result}"
+
+def div_numbers(*args, **kwargs):
+    num1 = float(document.getElementById("num1").value)
+    num2 = float(document.getElementById("num2").value)
+    try:
+        result = num1 / num2
+    except:
+        result = float('NaN')
+    document.getElementById("result").innerText = f"{num1} / {num2} = {result}"
+</py-script>
+
+</body>
+</html>
+
